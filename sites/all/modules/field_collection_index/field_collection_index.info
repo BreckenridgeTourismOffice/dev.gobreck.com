@@ -1,0 +1,11 @@
+name = Field Collection Index
+description = Indexes content in field collections for the Drupal search
+core = 7.x
+dependencies[] = field_collection
+; Information added by drupal.org packaging script on 2012-08-05
+version = "7.x-1.0"
+core = "7.x"
+package = Fields
+project = "field_collection_index"
+datestamp = "1344176823"
+

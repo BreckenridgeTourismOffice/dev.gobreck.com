@@ -1,0 +1,202 @@
+﻿#tab-inst {background-image:url(images/tab-instagram.png) !important; background-repeat:no-repeat; }
+#tab-youtube { background-image:url(images/tab-yt.png); background-repeat:no-repeat; }
+#tab-facebook { background-image:url(images/tab-fb.png); background-repeat:no-repeat; }
+#tab-twitter { background-image:url(images/tab-tw.png); background-repeat:no-repeat; }
+/*FOOTER TABS*/
+ul.resp-tabs-list,p { margin:0; padding:0; }
+.resp-tabs-list li { font-weight:600; font-size:13px; display:inline-block; padding:0; margin:0; margin-bottom: 10px; list-style:none; cursor:pointer; float:left; width:51px; height:53px; text-indent:-5000px; }
+.resp-tabs-container { padding:0; background-color:#fff; clear:left; max-width:300px; float:left; height:460px; position:absolute; margin-left:100px; }
+
+#footer .resp-tabs-container{
+	text-align:center;overflow-y: auto;
+	width: 100%;
+}
+.resp-tabs-container h3{
+	font-size: 1.17em;font-family: 'Raleway', sans-serif; font-weight:400; text-align: left; margin-top: 0px; margin-bottom: 0px; padding-left: 10px;
+margin-top: 20px;
+}
+
+#footer .resp-tabs-container h3{
+	border-bottom: 1px solid #ccc;
+font-size: 20px;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	text-transform: uppercase;
+	max-width: 300px;
+	padding: 0px;
+	margin-left: auto;
+	margin-right: auto;
+
+	}
+#block-views-events-tab-content-block-1 .resp-tabs-container h3{
+	padding-left: 0px;
+}
+
+.resp-tabs-container img{
+	/*max-width: 216px;*/
+	height: auto !important;
+	padding: 20px;
+	padding-left: 0px;
+}
+
+
+.resp-tabs-container a{
+	color: #99a61d;
+}
+.youtube-pull-item .title a{
+	color: #666 !important;
+	text-transform: uppercase;
+}
+.youtube-pull-item{
+	margin-bottom: 20px;
+	font-family: 'Raleway', sans-serif; font-weight:400;
+}
+
+h2.resp-accordion { cursor:pointer; padding:5px; display:none; }
+.resp-tab-content { display:none; padding:15px; }
+.resp-tab-active { border-bottom:none;  padding:0px!important; }
+.resp-tab-active { border-bottom:none; }
+.resp-content-active,.resp-accordion-active { display:block; }
+.resp-tab-content { }
+h2.resp-accordion { font-size:13px; border:1px solid #c1c1c1; border-top:0 solid #c1c1c1; margin:0; padding:10px 15px; }
+h2.resp-tab-active { border-bottom:0 solid #c1c1c1!important; margin-bottom:0!important; padding:10px 15px!important; }
+h2.resp-tab-title:last-child { border-bottom:12px solid #c1c1c1!important; background:blue; }
+
+/*EVENTS TABS*/
+#block-views-events-tab-content-block-1{margin-top: 50px; height: 330;}
+
+
+#horizontalTabEvents ul.resp-tabs-list,p { margin:0; padding:0; }
+#horizontalTabEvents .resp-tabs-list li {  font-size: 20px; font-family: 'Raleway', sans-serif; font-weight:400; line-height:46px; text-align: center; margin-bottom: 2px !important; background-color: #717074; color: #FFF; font-weight:600; font-size:20px; display:inline-block; padding:0; margin:0; list-style:none; cursor:pointer; float:left; width:259px; height:46px; text-indent: 0px;   font-family: 'Raleway', sans-serif; font-weight:400;}
+
+#horizontalTabEvents .resp-tabs-container { padding:0; background-color:#fff; clear:left; max-width:760px; float:left; height:auto; position:absolute; margin-left:274px; width: auto; }
+#horizontalTabEvents .resp-tabs-container ul li{
+
+	line-height: 1.8em;
+}
+#footer #horizontalTabEvents .resp-tab-content{padding-top:15px; }
+#horizontalTabEvents .resp-tab-content { width: 90%!important;  display:none; padding:15px; padding-top: 0px; padding-right: 0px; font-size: 15px;  font-family: 'Raleway', sans-serif; }
+#horizontalTabEvents h2.resp-accordion {width: 100%!important; }
+
+#horizontalTabEvents .resp-tab-active {background-image: url(images/tab-arrow.gif); background-repeat: no-repeat; background-position: right center; border-bottom:none; margin-bottom:-1px!important; padding:0px 0px!important;padding-right: 15px !important; background-color: #555555 !important; }
+#horizontalTabEvents .resp-tab-active { border-bottom:none; }
+#horizontalTabEvents .resp-content-active,.resp-accordion-active { display:block; }
+#horizontalTabEvents .resp-tab-content { }
+#horizontalTabEvents h2.resp-accordion {font-size: 20px; font-family: 'Raleway', sans-serif; font-weight:400; line-height:46px; border:1px solid #c1c1c1; border-top:0 solid #c1c1c1; margin:0; padding:0;background-color: #717074; text-align: center; color: #fff;
+ }
+#horizontalTabEvents h2.resp-tab-active { border-bottom:0 solid #c1c1c1!important; margin-bottom:0!important; padding:0px!important; }
+#horizontalTabEvents h2.resp-tab-title:last-child { border-bottom:12px solid #c1c1c1!important; background:blue; }
+.resp-arrow{
+	display: none;
+}
+
+
+/*-----------Vertical tabs-----------*/
+.resp-vtabs ul.resp-tabs-list { float:left; width:30%; }
+.resp-vtabs .resp-tabs-list li { display:block; padding:15px!important; margin:0; cursor:pointer; float:none;
+ }
+.resp-vtabs .resp-tabs-container { padding:0; background-color:#fff; border:1px solid #c1c1c1; float:left; width:68%; min-height:250px; border-radius:4px; clear:none; }
+.resp-vtabs .resp-tab-content { border:none; }
+.resp-vtabs li.resp-tab-active { border:1px solid #c1c1c1; border-right:none; background-color:#fff; position:relative; z-index:1; margin-right:-1px!important; padding:14px 15px 15px 14px!important; }
+.resp-arrow { width:0; height:0; float:right; margin-top:3px; border-left:6px solid transparent; border-right:6px solid transparent; border-top:12px solid #c1c1c1; }
+h2.resp-tab-active span.resp-arrow { border:none; border-left:6px solid transparent; border-right:6px solid transparent; border-bottom:12px solid #9B9797; }
+
+/*-----------Accordion styles-----------*/
+h2.resp-tab-active { background:#DBDBDB!important; }
+.resp-easy-accordion h2.resp-accordion { display:block; }
+.resp-easy-accordion .resp-tab-content { border:1px solid #c1c1c1; }
+.resp-easy-accordion .resp-tab-content:last-child { border-bottom:1px solid #c1c1c1!important; }
+.resp-jfit { width:100%; margin:0; }
+.resp-tab-content-active { display:block; }
+h2.resp-accordion:first-child { border-top:1px solid #c1c1c1!important; }
+#horizontalTab { overflow:hidden; display:inline-block; width:20%!important; }
+#block-block-3 { overflow:hidden; display:inline-block; max-width:480px; width:50%; float:left; }
+
+
+@media only screen and (min-width: 769px) {
+	.resp-tabs-list {
+		width:60px;
+		float:left;
+	}
+
+
+	.resp-tabs-list li {
+		font-weight:600;
+		font-size:13px;
+		display:block;
+		padding:0px;
+		margin:0;
+		margin-bottom: 10px;
+		list-style:none;
+		cursor:pointer;
+		float:none;
+	}
+
+
+
+
+
+}
+
+/*Here your can change the breakpoint to set the accordion, when screen resolution changed*/
+@media only screen and (max-width: 767px) {
+	ul.resp-tabs-list {
+		display:none;
+	}
+	#horizontalTabEvents .resp-tabs-container {border: 1px solid #eee; padding:0px !important; background-color:#fff; clear:left; max-width:100%; float:none; height:auto; position:relative !important; margin-left:auto; margin-right:auto;}
+
+
+	h2.resp-accordion {
+		display:block;
+		width: 100%;
+	}
+
+	.resp-vtabs .resp-tab-content {
+		border:1px solid #C1C1C1;
+	}
+
+	.resp-vtabs .resp-tabs-container {
+		border:none;
+		float:none;
+		width:100%;
+		min-height:initial;
+		clear:none;
+	}
+
+	.resp-accordion-closed {
+		display:none!important;
+	}
+
+	.resp-vtabs .resp-tab-content:last-child {
+		border-bottom:1px solid #c1c1c1!important;
+	}
+
+	.resp-tabs-container {
+		padding:0;
+		background-color:#fff;
+		clear:left;
+		max-width:300px;
+		float:left;
+		height:auto;
+		position:relative!important;
+		margin-left:0!important;
+	}
+
+
+	#horizontalTab {
+		overflow:hidden;
+		display:inline-block;
+		width:100%!important;
+	}
+}
+
+
+@media only screen and (max-width: 1023px) {
+#horizontalTab { overflow:hidden; display:inline-block; width:60px!important; }
+.resp-tabs-container{margin-left: 65px; max-width:300px; overflow-x: hidden; }
+
+.resp-tabs-list li{
+
+}
+
+}

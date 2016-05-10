@@ -1,0 +1,33 @@
+<?php
+
+function field_collection_index_node_update_index($node) {
+  $text = '';
+	if ( !empty($node->field_tab_accordion_content ) ) {
+		foreach($node->field_tab_accordion_content['und'] AS $row) {
+			$row_text = _field_collection_index_row_text($row['value']);
+		  $text .= $row_text;
+		}	// foreach($node->field_tab_accordion_content['und'] AS $row) {
+	}	// if ( !empty($node->field_tab_accordion_content) ) {
+  return $text;
+}
+
+
+function field_collection_index_node_view($node, $view_mode, $langcode) {
+	if ( !empty($node->field_tab_accordion_content) && $view_mode == 'search_result') {
+		$row_text = '';
+		foreach($node->field_tab_accordion_content['und'] AS $row) {
+			$row_text .= _field_collection_index_row_text($row['value']);
+		}	// foreach($node->field_tab_accordion_content['und'] AS $row) {
+		$node->content['tab_content'] = array(
+	    '#markup' => $row_text,
+	  );
+	}	// if ( !empty($node->field_tab_accordion_content) && $view_mode == 'search_result') {
+}	// function field_collection_index_node_view($node, $view_mode, $langcode) {
+
+
+function _field_collection_index_row_text($entity_id) {
+	$queryString = "SELECT field_tab_content_value FROM field_data_field_tab_content WHERE entity_id = :row_id AND entity_type = 'field_collection_item' AND deleted = 0 ORDER BY entity_id LIMIT 1";
+	$queryValues = array('row_id' => $entity_id);
+	$row_text = db_query($queryString, $queryValues)->fetchField();
+	return $row_text;
+}	// function field_collection_index_row_text($entity_id) {

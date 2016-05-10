@@ -1,0 +1,31 @@
+# Ignore a bunch of stuff to keep our repos (c)lean and mean. 
+# Configuration files that may contain sensitive information.
+sites/*/settings*.php
+ 
+# Paths that contain user-generated content.
+sites/*/files
+sites/files
+sites/default/tmp/
+ 
+# Server error logs.
+error_log
+ 
+# Backups.
+private/backup_migrate/manual
+private/backup_migrate/scheduled
+ 
+# Local dev files.
+.DS_Store
+**/.DS_Store
+nbproject
+.idea
+.sass-cache
+apc.php
+private
+*.sql
+*.tar.gz
+*.tgz
+*.tar
+**/*.sql
+**/*.tar.gz
+

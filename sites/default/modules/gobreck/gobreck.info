@@ -1,0 +1,4 @@
+name        = "Go Breck"
+description = "Group of helper functions for the GoBreck.com site"
+package     = "gobreck.com"
+core        = "7.x"

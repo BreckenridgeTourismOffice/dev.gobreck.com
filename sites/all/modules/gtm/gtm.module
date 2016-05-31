@@ -1,0 +1,175 @@
+<?php 
+/**
+ * @file
+ * Drupal Module: Google Tag Manager
+ * Provides integration with Google Tag Manager.
+ */
+
+/**
+ * Implements hook_permission().
+ */
+function gtm_permission() {
+  return array(
+    'administer google tag manager' => array(
+      'title' => t('Administer Google Tag Manager'),
+      'description' => 'Configure Google Tag Manager.'
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function gtm_menu() {
+  $items['admin/settings/gtm'] = array(
+    'title' => 'Google Tag Manager',
+    'description' => 'Configure the settings for Google Tag Manager.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('gtm_admin_settings_form'),
+    'access arguments' => array('administer google tag manager'),
+    'file' => 'gtm.admin.inc',
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_theme
+ */
+
+function gtm_theme() {
+  return array(
+    'gtm_container' => array(
+      'variables' => array('gtm_id' => NULL),
+      'file' => 'gtm.theme.inc'
+    ),
+    'gtm_datalayer' => array(
+      'variables' => array('dataLayer' => NULL),
+      'file' => 'gtm.theme.inc'
+    ),
+  );
+}
+
+/**
+ * Implements hook_page_alter().
+ *
+ * Adds a post_render callback and loads the include file.
+ *
+ * @see drupal_render_page()
+ */
+function gtm_page_alter(&$page) {
+  if (!gtm_should_track()) {
+    return;
+  }
+
+  // Call sequence:
+  // - drupal_render_page()
+  //   - hook_page_alter()
+  //   - drupal_render()
+  // - drupal_render()
+  //   - callbacks in $elements['#theme_wrappers']
+  //     - hook_preprocess_html(): 'html' is the wrapper for page
+  //     - templates may add tags after body tag
+  //   - callbacks in $elements['#post_render']
+  //     - gtm_page_process(): callback set here
+
+  // Add callback routine.
+  $page['#post_render'][] = 'gtm_page_process';
+}
+
+/**
+ * CTools plugin API hook for Context. Note that a proper entry in
+ * hook_ctools_plugin_api() must exist for this hook to be called.
+ */
+function gtm_context_plugins() {
+  $plugins = array();
+  $plugins['context_reaction_data_layer'] = array(
+    'handler' => array(
+      'path' => drupal_get_path('module', 'gtm') .'/plugins',
+      'file' => 'context_reaction_data_layer.inc',
+      'class' => 'context_reaction_data_layer',
+      'parent' => 'context_reaction',
+    ),
+  );
+  $plugins['context_reaction_gtm_container'] = array(
+    'handler' => array(
+      'path' => drupal_get_path('module', 'gtm') .'/plugins',
+      'file' => 'context_reaction_gtm_container.inc',
+      'class' => 'context_reaction_gtm_container',
+      'parent' => 'context_reaction',
+    ),
+  );
+  return $plugins;
+}
+
+/**
+ * Register a reaction
+ * @return array
+ */
+
+function gtm_context_registry() {
+  return array(
+    'reactions' => array(
+      'data_layer' => array(
+        'title' => t('GTM dataLayer'),
+        'plugin' => 'context_reaction_data_layer',
+      ),
+      'gtm_container' => array(
+        'title' => t('GTM Container'),
+        'plugin' => 'context_reaction_gtm_container',
+      )
+    ),
+  );
+}
+
+/**
+ * Determines if the current role(s) should be tracked
+ */
+function gtm_should_track() {
+  global $user;
+  $id = variable_get('gtm', NULL);
+  $track = array();
+
+  if (is_array($user->roles)) {
+    foreach ($user->roles as $role) {
+      $role = str_replace(' ', '_', $role);
+      $track[] = variable_get('gtm_track_' . $role, FALSE) ? TRUE : FALSE;
+    }
+  }
+  // Don't track page views in the admin sections, or for certain roles.
+  // Check if we should track the currently active user's role.
+  if(in_array(TRUE, $track) && arg(0) != 'admin' && !is_null($id)) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * Implements hook_gtm_data_layer
+ */
+
+function gtm_gtm_data_layer() {
+ if($plugin = context_get_plugin('reaction', 'data_layer')) {
+  return $plugin->execute();
+ }
+ return FALSE;
+}
+
+
+/**
+ * Implements callback_post_render().
+ *
+ * Inserts JavaScript snippet immediately following the opening body tag.
+ *
+ * @see gtm_page_alter()
+ * @see drupal_render()
+ */
+function gtm_page_process(&$children, $elements) {
+  // Insert snippet after the opening body tag.
+  if($plugin = context_get_plugin('reaction', 'gtm_container')) {
+    $script = $plugin->execute();
+    $children = preg_replace('@<body[^>]*>@', '$0' . $script, $children, 1);
+  }
+  return $children;
+}

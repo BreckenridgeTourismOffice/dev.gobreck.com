@@ -1,0 +1,4 @@
+name = Google Tag Manager
+description = Provides integration with Google Tag Manager.
+package = Analytics
+core = 7.x

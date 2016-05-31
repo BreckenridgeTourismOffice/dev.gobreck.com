@@ -1,0 +1,32 @@
+<?php
+/**
+ * @file
+ * Installation file for the Google Tag Manager module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function gtm_install() {
+  $t = get_t();
+  drupal_set_message(
+    $t(
+      'Google Tag Manager succesfully installed. You may <a href="@link">configure it</a>.',
+      array(
+        '@link' => url('admin/settings/gtm'),
+      )
+    )
+  );
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function gtm_uninstall() {
+  $user_roles = user_roles();
+  foreach ($user_roles as $user_role) {
+    $role = str_replace(' ', '_', $user_role);
+    variable_del('gtm_track_' . $role);
+  }
+  variable_del('gtm');
+}
